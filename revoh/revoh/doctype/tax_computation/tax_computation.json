@@ -1,0 +1,242 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-02-29 07:45:46.733661",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details_section",
+  "employee",
+  "start_date",
+  "column_break_d59iz",
+  "employee_name",
+  "end_date",
+  "section_break_tmfca",
+  "gross_pay",
+  "type_of_regim",
+  "column_break_hyaef",
+  "income",
+  "tds",
+  "income_details_section",
+  "salary",
+  "rental_income_received",
+  "other_income",
+  "interest_on_home_loan_self_occupied",
+  "column_break_qa9mj",
+  "income_from_interest",
+  "income_from_digital_assets",
+  "exempt_allowances",
+  "interest_on_home_loan_let_out",
+  "deductions_section",
+  "basic_deductions",
+  "medical_insurance",
+  "interest_on_educational_loan",
+  "employees_contribution_to_nps",
+  "column_break_8rwsf",
+  "interest_from_deposits",
+  "donations_to_charity",
+  "interest_on_housing_loan"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_details_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "column_break_d59iz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.first_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "section_break_tmfca",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "gross_pay",
+   "fieldtype": "Currency",
+   "label": "Gross Amount",
+   "read_only": 1
+  },
+  {
+   "depends_on": "gross_pay",
+   "fieldname": "type_of_regim",
+   "fieldtype": "Select",
+   "label": "Type of Regim",
+   "options": "\nNew Regim\nOld Regim"
+  },
+  {
+   "fieldname": "column_break_hyaef",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "income",
+   "fieldtype": "Currency",
+   "label": "Income",
+   "read_only": 1
+  },
+  {
+   "depends_on": "type_of_regim",
+   "fieldname": "tds",
+   "fieldtype": "Currency",
+   "label": "TDS - Tax Deducted at Source.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "income_details_section",
+   "fieldtype": "Section Break",
+   "label": "Income Details"
+  },
+  {
+   "description": "Note : Salary before reducing HRA, LTA, Standard Deductions & Professional  Tax.  if applicable, reduce leave encashment (max:25L)",
+   "fieldname": "salary",
+   "fieldtype": "Currency",
+   "label": "Salary"
+  },
+  {
+   "description": "Note : Annual rent received on let-out Property",
+   "fieldname": "rental_income_received",
+   "fieldtype": "Currency",
+   "label": "Rental Income Received"
+  },
+  {
+   "description": "Note : Includes taxable freelancing income or any other taxable Income",
+   "fieldname": "other_income",
+   "fieldtype": "Currency",
+   "label": "Other Income"
+  },
+  {
+   "description": "Note : Interest Paid on Housing loan taken for self-occupied property",
+   "fieldname": "interest_on_home_loan_self_occupied",
+   "fieldtype": "Currency",
+   "label": "Interest on Home Loan Self Occupied "
+  },
+  {
+   "fieldname": "column_break_qa9mj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Note : Includes Interest from Savings bank , deposits and other interest",
+   "fieldname": "income_from_interest",
+   "fieldtype": "Currency",
+   "label": "Income from Interest"
+  },
+  {
+   "description": "Note : Net Income from Digital Assets , taxed at 30%",
+   "fieldname": "income_from_digital_assets",
+   "fieldtype": "Currency",
+   "label": "Income from Digital Assets "
+  },
+  {
+   "description": "Note : HRA, LTA , Professional Tax and any other Exemptions",
+   "fieldname": "exempt_allowances",
+   "fieldtype": "Currency",
+   "label": "Exempt Allowances"
+  },
+  {
+   "description": "Note : Interest Paid on Housing Loan taken for rented / let-out property",
+   "fieldname": "interest_on_home_loan_let_out",
+   "fieldtype": "Currency",
+   "label": "Interest on Home Loan Let Out"
+  },
+  {
+   "fieldname": "deductions_section",
+   "fieldtype": "Section Break",
+   "label": "Deductions"
+  },
+  {
+   "description": "Note : Amount invested / paid tax savings instruments such as PPF ,ELSS mutual funds , LIC Premium etc (max.1.5L)",
+   "fieldname": "basic_deductions",
+   "fieldtype": "Currency",
+   "label": "Basic Deductions- 80C"
+  },
+  {
+   "description": "Note : Mediacal Premium & Preventive health checkup fees paid for self & family including parents ",
+   "fieldname": "medical_insurance",
+   "fieldtype": "Currency",
+   "label": "Medical Insurance - 80D"
+  },
+  {
+   "description": "Note: Amount of Interest Paid on loan taken for higher education",
+   "fieldname": "interest_on_educational_loan",
+   "fieldtype": "Currency",
+   "label": "Interest on Educational Loan- 80E"
+  },
+  {
+   "description": "Note: Includes voluntary contribution to National Pension Scheme (NPS) under section 80CCD (1) & 80CCD (1B)",
+   "fieldname": "employees_contribution_to_nps",
+   "fieldtype": "Currency",
+   "label": "Employee's contribution to NPS- 80CCD"
+  },
+  {
+   "fieldname": "column_break_8rwsf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Note : Amount of interest income on deposits in savings account (includes fixed /recurring deposit interest in case of senior citizen)",
+   "fieldname": "interest_from_deposits",
+   "fieldtype": "Currency",
+   "label": "Interest from Deposits- 80TTA "
+  },
+  {
+   "description": "Note : Amount paid as donation to charitable institutions or certain recognised funds ",
+   "fieldname": "donations_to_charity",
+   "fieldtype": "Currency",
+   "label": "Donations to Charity- 80G"
+  },
+  {
+   "description": "Note : Amount of interest paid on housing loan sanctioned during FY 2022-2023 (max:1.5L)",
+   "fieldname": "interest_on_housing_loan",
+   "fieldtype": "Currency",
+   "label": "Interest on Housing Loan- 80EEA "
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-02-29 07:45:46.733661",
+ "modified_by": "Administrator",
+ "module": "Revoh",
+ "name": "Tax Computation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
