@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "TAX-.#####",
  "creation": "2024-02-29 07:45:46.733661",
  "default_view": "List",
  "doctype": "DocType",
@@ -37,7 +38,15 @@
   "column_break_8rwsf",
   "interest_from_deposits",
   "donations_to_charity",
-  "interest_on_housing_loan"
+  "interest_on_housing_loan",
+  "other_calculation_tab",
+  "income_tax",
+  "cess",
+  "tds_paid",
+  "column_break_grfbq",
+  "surcharge",
+  "gross_tds_payable",
+  "balance_payable_refund"
  ],
  "fields": [
   {
@@ -213,14 +222,54 @@
    "fieldname": "interest_on_housing_loan",
    "fieldtype": "Currency",
    "label": "Interest on Housing Loan- 80EEA "
+  },
+  {
+   "fieldname": "other_calculation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Others"
+  },
+  {
+   "fieldname": "income_tax",
+   "fieldtype": "Currency",
+   "label": "Income Tax "
+  },
+  {
+   "fieldname": "cess",
+   "fieldtype": "Currency",
+   "label": "Cess "
+  },
+  {
+   "fieldname": "tds_paid",
+   "fieldtype": "Currency",
+   "label": " TDS Paid "
+  },
+  {
+   "fieldname": "column_break_grfbq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "surcharge",
+   "fieldtype": "Currency",
+   "label": "Surcharge "
+  },
+  {
+   "fieldname": "gross_tds_payable",
+   "fieldtype": "Currency",
+   "label": "Gross TDS Payable "
+  },
+  {
+   "fieldname": "balance_payable_refund",
+   "fieldtype": "Currency",
+   "label": " Balance Payable Refund "
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-02-29 07:45:46.733661",
+ "modified": "2024-02-29 18:35:26.550322",
  "modified_by": "Administrator",
  "module": "Revoh",
  "name": "Tax Computation",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

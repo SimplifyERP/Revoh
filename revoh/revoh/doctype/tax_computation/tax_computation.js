@@ -5,6 +5,7 @@ frappe.ui.form.on('Tax Computation', {
     type_of_regim: function(frm) {
         var type_of_regim = frm.doc.type_of_regim;
         var income = frm.doc.income;
+		var gross_pay = frm.doc.gross_pay;
 
         if (type_of_regim === "New Regim") {
             if (income) {
@@ -17,23 +18,40 @@ frappe.ui.form.on('Tax Computation', {
         } else {
             frm.set_value('tds', 0); 
         }
+		if (gross_pay >= 5000000 && gross_pay <= 10000000) {
+			frm.set_value('surcharge', gross_pay * 0.10);
+		} 
+		else if (gross_pay > 10000000 && gross_pay <= 20000000) {
+			frm.set_value('surcharge', gross_pay * 0.15);
+									
+		}
+		else if (gross_pay > 20000000 && gross_pay <= 50000000) {
+			frm.set_value('surcharge', gross_pay * 0.25);
+									
+		} 
+		else if (gross_pay > 50000000) {
+			frm.set_value('surcharge', gross_pay * 0.37);
+									
+		}
+					
     },
-    
-    type_of_regim: function(frm) {
-        var type_of_regim = frm.doc.type_of_regim;
-        var income = frm.doc.income;
-
-        if (type_of_regim === "New Regim") {
-            if (income) {
-                calculate_tds_new_regim(frm, income);
-            }
-        } else if (type_of_regim === "Old Regim") {
-            if (income) {
-                calculate_tds_old_regim(frm, income);
-            }
-        } else {
-            frm.set_value('tds', 0); 
-        }
+	
+	
+	validate: function(frm) {
+        var surcharge = frm.doc.surcharge || 0;
+        var income_tax = frm.doc.income_tax || 0;
+	
+        var cess = surcharge * 0.04; 
+        frm.set_value('cess', cess);
+		var tds_paid = 0;
+		tds_paid = income_tax * 0.3;
+        
+        frm.set_value('tds_paid', tds_paid);
+        
+        var tds_pay = surcharge + income_tax + cess;
+        frm.set_value('gross_tds_payable', tds_pay);
+		var balance_payable_refund = tds_pay - tds_paid;
+        frm.set_value('balance_payable_refund', balance_payable_refund);
     },
     
     end_date: function(frm) {
@@ -75,21 +93,27 @@ frappe.ui.form.on('Tax Computation', {
 });
 
 function calculate_tds_new_regim(frm, income) {
-    var tds = 0; 
+    var tds = 0;
 
     if (income >= 300001 && income <= 600000) {
         tds = income * 0.05;
     } else if (income >= 600001 && income <= 900000) {
         tds = income * 0.10;
     } else if (income >= 900001 && income <= 1200000) {
-        tds = income * 0.05;
-    }
+        tds = income * 0.15;
+    }else if (income >= 1200001 && income <= 1500000) {
+		tds = income * 0.20;
+	} else if (income > 1500000) {
+		tds = income * 0.35;
+	}
 
     frm.set_value('tds', tds);
+	frm.set_value('income_tax',tds)
 }
 
 function calculate_tds_old_regim(frm, income) {
     var tds = 0; 
+
     if (income >= 250001 && income <= 500000) {
         tds = income * 0.05;
     } else if (income >= 500001 && income <= 1000000) {
