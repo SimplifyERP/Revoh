@@ -52,6 +52,16 @@ frappe.ui.form.on('Tax Computation', {
         frm.set_value('gross_tds_payable', tds_pay);
 		var balance_payable_refund = tds_pay - tds_paid;
         frm.set_value('balance_payable_refund', balance_payable_refund);
+        var rebate_amount = (surcharge + income_tax + cess + tds_paid) - 25000
+        frm.set_value('rebate_amount', rebate_amount);
+        if (rebate_amount >= 25000) {
+            frm.set_value('tax_payable', rebate_amount);
+        } else {
+            frm.set_value('tax_payable', 0);
+        }
+
+
+
     },
     
     end_date: function(frm) {
