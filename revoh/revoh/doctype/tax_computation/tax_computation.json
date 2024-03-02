@@ -43,10 +43,12 @@
   "income_tax",
   "cess",
   "tds_paid",
+  "rebate_amount",
   "column_break_grfbq",
   "surcharge",
   "gross_tds_payable",
-  "balance_payable_refund"
+  "balance_payable_refund",
+  "tax_payable"
  ],
  "fields": [
   {
@@ -261,11 +263,21 @@
    "fieldname": "balance_payable_refund",
    "fieldtype": "Currency",
    "label": " Balance Payable Refund "
+  },
+  {
+   "fieldname": "rebate_amount",
+   "fieldtype": "Currency",
+   "label": " Rebate"
+  },
+  {
+   "fieldname": "tax_payable",
+   "fieldtype": "Currency",
+   "label": "Tax payable"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-02-29 18:35:26.550322",
+ "modified": "2024-03-02 14:58:45.419735",
  "modified_by": "Administrator",
  "module": "Revoh",
  "name": "Tax Computation",
